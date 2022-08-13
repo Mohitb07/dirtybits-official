@@ -21,6 +21,14 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/server": "^11.10.0",
+    "@mantine/core": "^5.1.5",
+    "@mantine/hooks": "^5.1.5",
+    "@mantine/modals": "^5.1.5",
+    "@mantine/next": "^5.1.5",
+    "@mantine/notifications": "^5.1.5",
+    "@mantine/nprogress": "^5.1.5",
     "next": "^12.2.2",
     "next-seo": "^5.4.0",
     "react": "^18.2.0",
