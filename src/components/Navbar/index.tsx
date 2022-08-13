@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
 
-import logo from '@/public/logo.png';
+// import logo from '@/public/logo.png';
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -24,7 +24,7 @@ const Index: React.FC = () => {
               className="cursor-pointer"
               height={40}
               width={120}
-              src={logo}
+              src="/logo.png"
               alt="Logo"
             />
           </Link>
