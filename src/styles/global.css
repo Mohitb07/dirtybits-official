@@ -1,3 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: #000;
+  border-radius: 100px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #6366f1;
+  border-radius: 100px;
+}
+
 @tailwind base;
 
 a {
@@ -18,4 +46,21 @@ a:hover {
 
 .content ul {
   @apply my-6;
+}
+
+@layer components {
+  .hover-underline {
+    @apply h-0.5 origin-left scale-x-0 rounded-full bg-[#6366F1] transition-transform duration-300 ease-out group-hover:scale-100;
+  }
+}
+
+
+.nav-scrolled {
+  color: #fff !important;
+  -webkit-box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.1) !important;
+  height: 3.9rem;
+  -webkit-transition: 0.2s ease-in-out !important;
+  transition: 0.2s ease-in-out !important;
+  backdrop-filter: blur(50px);
 }
