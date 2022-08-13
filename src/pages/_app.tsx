@@ -24,6 +24,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
         ],
       },
       primaryColor: 'primary',
+      breakpoints: {
+        xs: 500,
+        sm: 800,
+        md: 1000,
+        lg: 1200,
+        xl: 1400,
+      },
     }}
   >
     <Component {...pageProps} />

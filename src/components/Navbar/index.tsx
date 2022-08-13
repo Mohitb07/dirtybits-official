@@ -1,11 +1,13 @@
-import { Button, Container, Divider, Group, List } from '@mantine/core';
+import { Burger, Button, Container, Divider, Group, List } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // import logo from '@/public/logo.png';
 
 const Index: React.FC = () => {
+  const [opened, setOpened] = useState(false);
+  const title = opened ? 'Close navigation' : 'Open navigation';
   useEffect(() => {
     window.addEventListener('scroll', () => {
       const header = document.querySelector('nav');
@@ -17,7 +19,7 @@ const Index: React.FC = () => {
 
   return (
     <nav className="sticky top-0 z-50 flex h-[3.9rem] items-center">
-      <Container size="xl" className="flex-1">
+      <Container size="xl" className="hidden flex-1 md:block">
         <Group>
           <Link href="/" passHref>
             <Image
@@ -58,6 +60,27 @@ const Index: React.FC = () => {
               </Button>
             </div>
           </div>
+        </Group>
+      </Container>
+      <Container className="flex-1 items-center md:hidden">
+        <Group className="flex justify-between">
+          <Burger
+            opened={opened}
+            onClick={() => setOpened((o) => !o)}
+            title={title}
+          />
+          <Link href="/" passHref>
+            <Image
+              className="cursor-pointer"
+              height={40}
+              width={120}
+              src="/logo.png"
+              alt="Logo"
+            />
+          </Link>
+          <Button variant="white" radius="xl" size="xs">
+            Log In
+          </Button>
         </Group>
       </Container>
     </nav>
