@@ -17,8 +17,8 @@
     "e2e": "start-server-and-test dev http://localhost:3000 cypress",
     "e2e:headless": "start-server-and-test dev http://localhost:3000 cypress:headless",
     "prepare": "husky install",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -31,8 +31,10 @@
     "@mantine/nprogress": "^5.1.5",
     "next": "^12.2.2",
     "next-seo": "^5.4.0",
+    "postcss-loader": "^7.0.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "storybook-dark-mode": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
