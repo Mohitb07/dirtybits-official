@@ -52,6 +52,9 @@ a:hover {
   .hover-underline {
     @apply h-0.5 origin-left scale-x-0 rounded-full bg-[#6366F1] transition-transform duration-300 ease-out group-hover:scale-100;
   }
+  .text-gradient {
+    @apply bg-gradient-to-r from-[#AE67FA] to-[#F49867] bg-clip-text
+  }
 }
 
 
@@ -63,4 +66,36 @@ a:hover {
   -webkit-transition: 0.2s ease-in-out !important;
   transition: 0.2s ease-in-out !important;
   backdrop-filter: blur(50px);
+}
+
+.btnRing {
+  border: 2px solid transparent;
+  padding: .3rem .3rem;
+  border-radius: 20rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.btnRing:hover {
+  border: 2px solid white;
+}
+
+.elementOne{
+  top: 2rem; 
+  right: 10rem;
+  border-radius: 32% 68% 26% 74% / 69% 56% 44% 31% ;
+  background: linear-gradient(87deg, #190549 22%, #5f279f 100%);
+}
+
+.elementTwo{
+  /* top: calc(100vh + 30rem); */
+  /* bottom: 10rem; */
+  border-radius: 32% 68% 26% 74% / 69% 56% 44% 31% ;
+  background: linear-gradient(87deg, #190549 22%, #5f279f 100%);
+}
+
+.glass {
+  -webkit-backdrop-filter: blur(50px) !important;
+  -moz-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px) !important;
+  background-clip: border-box !important;
 }

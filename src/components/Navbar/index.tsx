@@ -18,7 +18,7 @@ const Index: React.FC = () => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 flex h-[3.9rem] items-center">
+    <nav className="fixed top-0 z-50 flex h-[3.9rem] w-full items-center">
       <Container size="xl" className="hidden flex-1 md:block">
         <Group>
           <Link href="/" passHref>
