@@ -1,26 +1,63 @@
-import { Button, Container, Grid, Stack, Text, Title } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { Button, Container, Text } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const HeroSection: React.FC = () => {
-  const largeScreen = useMediaQuery('(min-width: 1024px)');
-  const titlePrimary = largeScreen
-    ? 'Welcome to DirtyBits'
-    : 'Enchance your skills';
-  const titleSecondary = largeScreen
-    ? 'First, solve the problem. Then, write the code.'
-    : "It's a platform for you to enhance your problem solving skills and prepare yourself for the technical interviews.";
+  // const titlePrimary = largeScreen
+  //   ? 'Welcome to DirtyBits'
+  //   : 'Enchance your skills';
+  // const titleSecondary = largeScreen
+  //   ? 'First, solve the problem. Then, write the code'
+  //   : "It's a platform for you to enhance your problem solving skills and prepare yourself for the technical interviews";
 
   return (
-    <div className="flex h-screen w-full items-center justify-center p-3 text-3xl md:p-10 lg:items-start ">
-      <Container size="xl" className="flex-1 ">
+    <div className="glass min-h-screen">
+      <Container size="xl" className="pt-[20%] lg:pt-[4%]">
+        <div className="grid grid-cols-1 p-3 lg:grid-cols-2">
+          <div className="col-span-1 flex flex-col items-center justify-center space-y-7 lg:items-start">
+            <h1 className="text-gradient text-center text-3xl font-bold tracking-wider text-transparent md:text-left md:text-5xl">
+              Ace your interview
+            </h1>
+            <Text className="text-2xl text-white md:text-3xl">
+              Be a Coder with us
+            </Text>
+            <Text
+              color="dimmed"
+              className=" text-center text-lg md:w-2/3 lg:w-full lg:text-left lg:text-xl"
+            >
+              Be a part of the DirtyBits community
+            </Text>
+            <div className="btnRing p-1">
+              <Link href="/" passHref>
+                <Button
+                  variant="white"
+                  radius="xl"
+                  size="xl"
+                  // className="mx-auto w-[10rem] text-black lg:mx-0"
+                >
+                  Explore
+                </Button>
+              </Link>
+            </div>
+          </div>
+          <div className="col-span-1 flex flex-col items-center justify-center transition-transform ease-in-out lg:scale-125">
+            <Image
+              src="https://i.postimg.cc/MGFX8MY9/Saly-1.png"
+              height={800}
+              width={800}
+              className="aspect-auto"
+              alt="rocket illustrator"
+            />
+          </div>
+        </div>
+      </Container>
+      {/* <Container size="xl" className="flex-1 ">
         <Grid gutter="md" grow>
           <Grid.Col
             className="flex items-center"
             span={4}
-            mt={!largeScreen ? 'sm' : ''}
+            mt={!largeScreen ? 'xl' : ''}
           >
             <Stack className="space-y-4">
               <Title
@@ -66,7 +103,7 @@ const HeroSection: React.FC = () => {
             />
           </Grid.Col>
         </Grid>
-      </Container>
+      </Container> */}
     </div>
   );
 };
