@@ -1,5 +1,7 @@
-import { Container, Text } from '@mantine/core';
+import { Text } from '@mantine/core';
 import React from 'react';
+
+import PageContainer from '@/layouts/Container';
 
 import feature1 from '../../../public/Saly-2.png';
 import feature2 from '../../../public/Saly-3.png';
@@ -12,7 +14,7 @@ const index: React.FC = () => {
       <Text color="white" align="center" className="text-[30px] md:text-[50px]">
         Some of Our Features
       </Text>
-      <Container size="xl" className="space-y-10">
+      <PageContainer className="space-y-10">
         <Feature
           title="Top Quality Questions"
           description="Join the community of top-quality questions if you are preparing for product-based companies."
@@ -31,7 +33,7 @@ const index: React.FC = () => {
           imageSrc={feature3}
           alt="feature1"
         />
-      </Container>
+      </PageContainer>
     </div>
   );
 };

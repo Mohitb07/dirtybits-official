@@ -1,7 +1,9 @@
-import { Button, Container, Text } from '@mantine/core';
+import { Button, Text } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+
+import PageContainer from '@/layouts/Container';
 
 const HeroSection: React.FC = () => {
   // const titlePrimary = largeScreen
@@ -13,7 +15,7 @@ const HeroSection: React.FC = () => {
 
   return (
     <div className="glass min-h-screen">
-      <Container size="xl" className="pt-[20%] lg:pt-[4%]">
+      <PageContainer className="pt-[20%] lg:pt-[4%]">
         <div className="grid grid-cols-1 p-3 lg:grid-cols-2">
           <div className="col-span-1 flex flex-col items-center justify-center space-y-7 lg:items-start">
             <h1 className="text-gradient text-center text-3xl font-bold tracking-wider text-transparent md:text-left md:text-5xl">
@@ -29,7 +31,7 @@ const HeroSection: React.FC = () => {
               Be a part of the DirtyBits community
             </Text>
             <div className="btnRing p-1">
-              <Link href="/" passHref>
+              <Link href="/problemset/all" passHref>
                 <Button
                   variant="white"
                   radius="xl"
@@ -51,7 +53,7 @@ const HeroSection: React.FC = () => {
             />
           </div>
         </div>
-      </Container>
+      </PageContainer>
       {/* <Container size="xl" className="flex-1 ">
         <Grid gutter="md" grow>
           <Grid.Col
