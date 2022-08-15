@@ -3,11 +3,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
-// import logo from '@/public/logo.png';
+import PageContainer from '@/layouts/Container';
 
-const Index: React.FC = () => {
+// import logo from '@/public/logo.png';
+type Props = {
+  isHome?: boolean;
+  activeNav?: string;
+};
+
+const Index: React.FC<Props> = ({ isHome = false, activeNav = '' }: Props) => {
   const [opened, setOpened] = useState(false);
   const title = opened ? 'Close navigation' : 'Open navigation';
+
   useEffect(() => {
     window.addEventListener('scroll', () => {
       const header = document.querySelector('nav');
@@ -17,9 +24,16 @@ const Index: React.FC = () => {
     return () => window.removeEventListener('scroll', () => {});
   }, []);
 
+  const isActiveIndex =
+    'underline decoration-[#6366F1] decoration-2 underline-offset-[40%]';
+
   return (
-    <nav className="fixed top-0 z-50 flex h-[3.9rem] w-full items-center">
-      <Container size="xl" className="hidden flex-1 md:block">
+    <nav
+      className={`${
+        isHome && 'fixed'
+      } top-0 z-50 flex h-[3.9rem] w-full items-center`}
+    >
+      <PageContainer className="hidden flex-1 md:block">
         <Group>
           <Link href="/" passHref>
             <Image
@@ -32,18 +46,36 @@ const Index: React.FC = () => {
           </Link>
           <div className="mt-1 flex flex-1 items-center justify-between p-4">
             <List className="flex space-x-8 text-white ">
-              <div className="group cursor-pointer tracking-wide">
-                <List.Item>Problems</List.Item>
-                <div className="hover-underline"></div>
-              </div>
-              <div className="group cursor-pointer tracking-wide">
-                <List.Item>Compete</List.Item>
-                <div className="hover-underline"></div>
-              </div>
-              <div className="group cursor-pointer tracking-wide">
-                <List.Item>Dashboard</List.Item>
-                <div className="hover-underline"></div>
-              </div>
+              <Link href="/problemset/all" passHref>
+                <div
+                  className={`group cursor-pointer tracking-wide ${
+                    activeNav.includes('/problemset') && isActiveIndex
+                  }`}
+                >
+                  <List.Item>Problems</List.Item>
+                  <div className="hover-underline underline"></div>
+                </div>
+              </Link>
+              <Link href="/compete" passHref>
+                <div
+                  className={`group cursor-pointer tracking-wide ${
+                    activeNav.includes('/compete') && isActiveIndex
+                  }`}
+                >
+                  <List.Item>Compete</List.Item>
+                  <div className="hover-underline"></div>
+                </div>
+              </Link>
+              <Link href="/dashboard" passHref>
+                <div
+                  className={`group cursor-pointer tracking-wide ${
+                    activeNav.includes('/dashboard') && isActiveIndex
+                  }`}
+                >
+                  <List.Item>Dashboard</List.Item>
+                  <div className="hover-underline"></div>
+                </div>
+              </Link>
             </List>
             <div className="flex items-center space-x-3">
               <Button variant="subtle" radius="xl" size="sm">
@@ -61,7 +93,7 @@ const Index: React.FC = () => {
             </div>
           </div>
         </Group>
-      </Container>
+      </PageContainer>
       <Container className="flex-1 items-center md:hidden">
         <Group className="flex justify-between">
           <Burger
