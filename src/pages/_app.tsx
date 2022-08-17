@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { MantineProvider } from '@mantine/core';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
+import { RecoilRoot } from 'recoil';
 
 import Navbar from '@/components/Navbar';
 import { RouterTransition } from '@/components/RouterTransition';
@@ -14,8 +15,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
       <RouterTransition />
-      <Navbar isHome={isHome} activeNav={router.pathname} />
-      <Component {...pageProps} />
+      <RecoilRoot>
+        <Navbar isHome={isHome} activeNav={router.pathname} />
+        <Component {...pageProps} />
+      </RecoilRoot>
     </MantineProvider>
   );
 };
