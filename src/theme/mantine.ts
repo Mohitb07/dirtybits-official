@@ -13,7 +13,7 @@ interface MantineTheme {
   // Determines whether elements that do not have pointer cursor by default
   // (checkboxes, radio, native select) should have it
   // Default border-radius used for most elements
-  defaultRadius: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | number;
+  defaultRadius?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | number;
   // Object of arrays with 10 colors
   colors?: Record<string, Tuple<string, 10>>;
 
@@ -74,7 +74,7 @@ const theme: MantineTheme = {
     xl: 1400,
   },
   loader: 'oval',
-  defaultRadius: 'xl',
+  // defaultRadius: 'xl',
   focusRing: 'auto',
 };
 
