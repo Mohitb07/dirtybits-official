@@ -1,4 +1,12 @@
-import { Burger, Button, Container, Divider, Group, List } from '@mantine/core';
+import {
+  Burger,
+  Button,
+  Container,
+  Divider,
+  Drawer,
+  Group,
+  List,
+} from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
@@ -115,6 +123,50 @@ const Index: React.FC<Props> = ({ isHome = false, activeNav = '' }: Props) => {
           </Button>
         </Group>
       </Container>
+      <Drawer
+        aria-labelledby="nav-drawer"
+        aria-describedby="drawer-item-list"
+        closeButtonLabel="Close drawer"
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title="Mohit Singh Bisht"
+        padding="xl"
+        size="md"
+        overlayBlur={3}
+      >
+        <List className="mt-10 flex flex-col space-y-10 text-white">
+          <Link href="/problemset/all" passHref>
+            <div
+              className={`group cursor-pointer tracking-wide ${
+                activeNav.includes('/problemset') && isActiveIndex
+              }`}
+            >
+              <List.Item>Problems</List.Item>
+              <div className="hover-underline underline"></div>
+            </div>
+          </Link>
+          <Link href="/compete" passHref>
+            <div
+              className={`group cursor-pointer tracking-wide ${
+                activeNav.includes('/compete') && isActiveIndex
+              }`}
+            >
+              <List.Item>Compete</List.Item>
+              <div className="hover-underline"></div>
+            </div>
+          </Link>
+          <Link href="/dashboard" passHref>
+            <div
+              className={`group cursor-pointer tracking-wide ${
+                activeNav.includes('/dashboard') && isActiveIndex
+              }`}
+            >
+              <List.Item>Dashboard</List.Item>
+              <div className="hover-underline"></div>
+            </div>
+          </Link>
+        </List>
+      </Drawer>
     </nav>
   );
 };
