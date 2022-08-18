@@ -22,11 +22,8 @@ const Card: React.FC<CardProps> = ({
       className="transition-transform duration-500 ease-in-out hover:scale-105"
     >
       <BackgroundImage src={backgroundImageSrc} radius="lg">
-        <Center
-          p="md"
-          className="flex flex-col items-start space-y-3 text-ellipsis"
-        >
-          <Text className="text-ellipsis" weight="bold" size={25} color="#fff">
+        <Center p="md" className="flex flex-col items-start space-y-3 ">
+          <Text weight="bold" size={25} color="#fff">
             {title}
           </Text>
           <Button radius="xl" variant="white">
