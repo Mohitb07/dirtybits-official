@@ -8,15 +8,36 @@ import { filterData } from '@/atom/filterData';
 import Card from '@/components/Card';
 import StyledChip from '@/components/Chip';
 import StyledMultiSelect from '@/components/MultiSelect';
+import MultiSelectFilter from '@/components/MultiSelect/CustomBody';
+import Table from '@/components/Table';
 import PageContainer from '@/layouts/Container';
 import { Meta } from '@/layouts/Meta';
-
 // Example query
 // http://localhost:3000/problemset/all/?status=AC&page=1&topicSlugs=array&difficulty=HARD
 
 const ProblemSet: React.FC = () => {
   const [filterStateData, setFilterStateData] = useRecoilState(filterData);
   const router = useRouter();
+  const companyTags = [
+    'Google',
+    'Facebook',
+    'Amazon',
+    'Microsoft',
+    'Apple',
+    'Alibaba',
+    'Tencent',
+    'Twitter',
+    'Instagram',
+    'Netflix',
+    'Spotify',
+    'Uber',
+    'Lyft',
+    'Airbnb',
+    'Snapchat',
+    'Pinterest',
+    'Tumblr',
+    'Reddit',
+  ];
 
   const handleSelectChange = (e: any) => {
     setFilterStateData((prev) => ({
@@ -51,7 +72,7 @@ const ProblemSet: React.FC = () => {
         title="Problems - DirtyBits"
         description="It's an online coding platform for skill enhancement and students preparing for technical interviews."
       />
-      <PageContainer className="h-screen space-y-5 overflow-hidden p-5">
+      <PageContainer className="h-screen space-y-5 p-5">
         <div className="flex items-center space-x-5 overflow-x-scroll scrollbar-hide">
           <Card
             title="Weekly Contest Result Announced"
@@ -72,22 +93,34 @@ const ProblemSet: React.FC = () => {
           />
         </div>
         <Divider orientation="horizontal" />
-        <div className="flex items-center space-x-3">
-          <Select
-            data={['Easy', 'Medium', 'Hard']}
-            placeholder="Difficulty"
-            radius="md"
-            onChange={handleSelectChange}
-            clearable
-          />
-          <StyledMultiSelect />
+        <div className="flex flex-col space-y-3 md:flex-row md:items-center md:space-y-0 md:space-x-3">
+          <div className="flex space-x-3">
+            <StyledMultiSelect filterStateData={filterStateData} />
+            <Select
+              data={['Easy', 'Medium', 'Hard']}
+              placeholder="Difficulty"
+              onChange={handleSelectChange}
+              clearable
+              className="flex-1 "
+            />
+          </div>
           <TextInput
             placeholder="Search questions"
             icon={<AiOutlineSearch />}
           />
         </div>
-        <div aria-label="filters" className="flex justify-start">
+        <div aria-label="filters" className="flex min-h-[5px] justify-start">
           <StyledChip dataList={latestData} />
+        </div>
+        <div className="flex flex-col items-start justify-between md:flex-row">
+          <Table />
+          <MultiSelectFilter
+            filterStateData={filterStateData}
+            itemList={companyTags}
+            className="md:w-1/4"
+            placeholder="Search for tags..."
+            title="Companies"
+          />
         </div>
       </PageContainer>
     </>
