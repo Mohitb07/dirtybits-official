@@ -55,6 +55,12 @@ a:hover {
   .text-gradient {
     @apply bg-gradient-to-r from-[#AE67FA] to-[#F49867] bg-clip-text
   }
+  .table-heading {
+    @apply py-4 md:px-6 md:font-bold md:text-base text-[#686868] border-b border-slate-500 text-sm px-3;
+  }
+  .table-data {
+    @apply md:py-4 md:px-6 border-b md:font-medium hover:text-blue-700 transition-all ease-in-out duration-100 cursor-pointer px-2 text-sm;
+  }
 }
 
 
