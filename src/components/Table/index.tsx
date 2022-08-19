@@ -1,166 +1,44 @@
 import { Pagination } from '@mantine/core';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-import TickIcon from '@/SVG';
+import TableHeading from './Heading';
+import Row from './Row';
 
-type TableProps = {};
+export interface Problem {
+  id: number;
+  title: string;
+  difficulty: string;
+  status: string;
+}
 
-const Table: React.FC<TableProps> = () => {
+type TableProps = {
+  dataList: Problem[];
+};
+
+const Table: React.FC<TableProps> = ({ dataList }) => {
   const router = useRouter();
   return (
     <div className="w-full lg:w-2/3">
-      <div className="mb-10 overflow-x-scroll rounded-md bg-slate-800 shadow-md scrollbar-hide">
+      <div className="mb-10 overflow-x-scroll rounded-md bg-slate-800 px-2 shadow-md scrollbar-hide md:px-0">
         <table className="w-full border-collapse text-left">
           <thead>
             <tr>
-              <th className="table-heading">Problem title</th>
-              <th className="table-heading">Difficulty</th>
-              <th className="table-heading">Status</th>
+              <TableHeading headingTitle="Problem title" />
+              <TableHeading headingTitle="Difficulty" />
+              <TableHeading headingTitle="Status" />
             </tr>
           </thead>
-          <tbody className="">
-            <tr>
-              <td className="table-data border-b border-slate-800 text-white">
-                <Link href="/">
-                  <a className="tracking-wide text-stone-200 no-underline transition-all duration-200 ease-in hover:text-indigo-400 md:text-sm">
-                    1. Two Sum
-                  </a>
-                </Link>
-              </td>
-              <td className="table-data border-b border-slate-800 py-4 px-6">
-                <p
-                  className={`rounded py-1 px-3 text-xs font-light tracking-wider text-yellow-400`}
-                >
-                  Easy
-                </p>
-              </td>
-              <td className="table-data cursor-default border-b border-slate-800 text-lg">
-                <span
-                  className={`px-3  font-light tracking-wider text-yellow-400`}
-                >
-                  <TickIcon />
-                </span>
-              </td>
-            </tr>
-            <tr className="text-ellipsis">
-              <td className="table-data max-w-[302px] border-b border-slate-800 text-white">
-                <div className="overflow-hidden">
-                  <div className="flex items-center">
-                    <div className="overflow-hidden truncate">
-                      <Link href="/">
-                        <a className=" tracking-wide text-stone-200 no-underline transition-all duration-200 ease-in hover:text-indigo-400 md:text-sm">
-                          2. Longest substring without repeating characters
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td className="table-data border-b border-slate-800 py-4 px-6">
-                <p
-                  className={`rounded py-1 px-3 text-xs font-light tracking-wider text-yellow-400`}
-                >
-                  Easy
-                </p>
-              </td>
-              <td className="table-data cursor-default border-b border-slate-800 text-lg">
-                <span
-                  className={`px-3  font-light tracking-wider text-yellow-400`}
-                >
-                  <TickIcon />
-                </span>
-              </td>
-            </tr>
-
-            <tr className="text-ellipsis">
-              <td className="table-data max-w-[302px] border-b border-slate-800 text-white">
-                <div className="overflow-hidden">
-                  <div className="flex items-center">
-                    <div className="overflow-hidden truncate">
-                      <Link href="/">
-                        <a className=" tracking-wide text-stone-200 no-underline transition-all duration-200 ease-in hover:text-indigo-400 md:text-sm">
-                          2. Longest substring without repeating characters
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td className="table-data border-b border-slate-800 py-4 px-6">
-                <p
-                  className={`rounded py-1 px-3 text-xs font-light tracking-wider text-yellow-400`}
-                >
-                  Easy
-                </p>
-              </td>
-              <td className="table-data cursor-default border-b border-slate-800 text-lg">
-                <span
-                  className={`px-3  font-light tracking-wider text-yellow-400`}
-                >
-                  <TickIcon />
-                </span>
-              </td>
-            </tr>
-
-            <tr className="text-ellipsis">
-              <td className="table-data max-w-[302px] border-b border-slate-800 text-white">
-                <div className="overflow-hidden">
-                  <div className="flex items-center">
-                    <div className="overflow-hidden truncate">
-                      <Link href="/">
-                        <a className=" tracking-wide text-stone-200 no-underline transition-all duration-200 ease-in hover:text-indigo-400 md:text-sm">
-                          2. Longest substring without repeating characters
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td className="table-data border-b border-slate-800 py-4 px-6">
-                <p
-                  className={`rounded py-1 px-3 text-xs font-light tracking-wider text-yellow-400`}
-                >
-                  Easy
-                </p>
-              </td>
-              <td className="table-data cursor-default border-b border-slate-800 text-lg">
-                <span
-                  className={`px-3  font-light tracking-wider text-yellow-400`}
-                >
-                  <TickIcon />
-                </span>
-              </td>
-            </tr>
-
-            <tr className="text-ellipsis">
-              <td className="table-data max-w-[302px] border-b border-slate-800 text-white">
-                <div className="overflow-hidden">
-                  <div className="flex items-center">
-                    <div className="overflow-hidden truncate">
-                      <Link href="/">
-                        <a className=" tracking-wide text-stone-200 no-underline transition-all duration-200 ease-in hover:text-indigo-400 md:text-sm">
-                          2. Longest substring without repeating characters
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td className="table-data border-b border-slate-800 py-4 px-6">
-                <p
-                  className={`rounded py-1 px-3 text-xs font-light tracking-wider text-yellow-400`}
-                >
-                  Easy
-                </p>
-              </td>
-              <td className="table-data cursor-default border-b border-slate-800 text-lg">
-                <span className={`px-3  font-light tracking-wider`}>
-                  <TickIcon />
-                </span>
-              </td>
-            </tr>
+          <tbody>
+            {dataList.map((problem) => (
+              <Row
+                difficulty={problem.difficulty}
+                problemId={problem.id}
+                problemTitle={problem.title}
+                status={problem.status}
+                key={problem.id}
+              />
+            ))}
           </tbody>
         </table>
       </div>
