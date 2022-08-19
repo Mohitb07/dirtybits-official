@@ -1,4 +1,4 @@
-export default function TickIcon() {
+export const TickIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,4 +15,4 @@ export default function TickIcon() {
       ></path>
     </svg>
   );
-}
+};
