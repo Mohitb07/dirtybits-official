@@ -19,7 +19,6 @@ const Card: React.FC<CardProps> = ({
         maxWidth: 300,
         overflow: 'hidden',
       }}
-      className="transition-transform duration-500 ease-in-out hover:scale-105"
     >
       <BackgroundImage src={backgroundImageSrc} radius="lg">
         <Center p="md" className="flex flex-col items-start space-y-3 ">
