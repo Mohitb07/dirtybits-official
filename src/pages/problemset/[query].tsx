@@ -1,6 +1,6 @@
 import { Divider, Select, TextInput } from '@mantine/core';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useRecoilState } from 'recoil';
 
@@ -18,6 +18,13 @@ import { Meta } from '@/layouts/Meta';
 const ProblemSet: React.FC = () => {
   const [filterStateData, setFilterStateData] = useRecoilState(filterData);
   const router = useRouter();
+
+  useEffect(() => {
+    if (router.query) {
+      console.log('requesting', router.query);
+    }
+  }, [router.asPath]);
+
   const companyTags = [
     'Google',
     'Facebook',
@@ -44,10 +51,6 @@ const ProblemSet: React.FC = () => {
       ...prev,
       difficulty: e,
     }));
-    // const variable = {
-    //   ...filterStateData,
-    //   difficulty: e ?? '',
-    // };
     const query = e ? { ...router.query, difficulty: e } : {};
     router.push(
       {
@@ -113,7 +116,28 @@ const ProblemSet: React.FC = () => {
           <StyledChip dataList={latestData} />
         </div>
         <div className="flex flex-col items-start justify-between md:flex-row">
-          <Table />
+          <Table
+            dataList={[
+              {
+                id: 1,
+                title: 'Two Sum',
+                difficulty: 'Easy',
+                status: 'completed',
+              },
+              {
+                id: 2,
+                title: 'Longest substring without repeating characters',
+                difficulty: 'Medium',
+                status: 'completed',
+              },
+              {
+                id: 3,
+                title: 'Median of Two Sorted Arrays',
+                difficulty: 'Hard',
+                status: 'completed',
+              },
+            ]}
+          />
           <MultiSelectFilter
             filterStateData={filterStateData}
             itemList={companyTags}
