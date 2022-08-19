@@ -35,23 +35,41 @@ const MultiSelectFilter: React.FC<MultiSelectFilterProps> = ({
         ...prev,
         tags: prev.tags.filter((tag) => tag !== value),
       }));
+      const tagValue = router.query.tag as string;
+      const filteredString = tagValue!
+        .split('&')
+        .filter((tag: string) => tag !== value)
+        .join('&');
+      router.push(
+        {
+          pathname: '/problemset/all/',
+          query: {
+            ...router.query,
+            tag: filteredString,
+          },
+        },
+        undefined,
+        { shallow: true }
+      );
     } else {
       setFilterStateData((prev) => ({
         ...prev,
         tags: [...prev.tags, value],
       }));
-    }
-    router.push(
-      {
-        pathname: '/problemset/all/',
-        query: {
-          ...router.query,
-          tag: value,
+      router.push(
+        {
+          pathname: '/problemset/all/',
+          query: {
+            ...router.query,
+            tag: router.query?.tag
+              ? router.query.tag.concat(`&${value}`)
+              : value,
+          },
         },
-      },
-      undefined,
-      { shallow: true }
-    );
+        undefined,
+        { shallow: true }
+      );
+    }
   };
 
   return (
