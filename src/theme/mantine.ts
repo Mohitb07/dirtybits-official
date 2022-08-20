@@ -23,6 +23,21 @@ interface MantineTheme {
   fontFamily?: string;
   // Monospace font-family, used in Code, Kbd and Prism components
   fontFamilyMonospace?: string;
+  primaryShade:
+    | 0
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | {
+        light: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+        dark: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+      };
   // Breakpoints used in some components to add responsive styles
   breakpoints: Record<'xs' | 'sm' | 'md' | 'lg' | 'xl', number>;
   // h1-h6 styles, used in Title and TypographyStylesProvider components
@@ -66,6 +81,10 @@ const theme: MantineTheme = {
     ],
   },
   primaryColor: 'primary',
+  primaryShade: {
+    light: 5,
+    dark: 5,
+  },
   breakpoints: {
     xs: 500,
     sm: 800,
