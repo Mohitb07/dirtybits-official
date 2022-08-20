@@ -86,18 +86,22 @@ const Index: React.FC<Props> = ({ isHome = false, activeNav = '' }: Props) => {
               </Link>
             </List>
             <div className="flex items-center space-x-3">
-              <Button variant="subtle" radius="xl" size="sm">
-                Sign Up
-              </Button>
+              <Link href="/auth/signup" passHref>
+                <Button variant="subtle" radius="xl" size="sm">
+                  Sign Up
+                </Button>
+              </Link>
               <Divider
                 orientation="vertical"
                 color="gray"
                 size="xs"
                 className="mt-2 h-7"
               />
-              <Button variant="white" radius="xl" size="sm">
-                Log In
-              </Button>
+              <Link href="/auth/login" passHref>
+                <Button variant="white" radius="xl" size="sm">
+                  Log In
+                </Button>
+              </Link>
             </div>
           </div>
         </Group>
