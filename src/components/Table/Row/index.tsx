@@ -47,7 +47,12 @@ const Row: React.FC<RowProps> = ({
   return (
     <tr>
       <td className="table-data border-b border-slate-800 text-white">
-        <Link href="/">
+        <Link
+          key={problemId}
+          href={{
+            pathname: `/problem/${problemId}/${problemTitle}`,
+          }}
+        >
           <a className="tracking-wide text-stone-200 no-underline transition-all duration-200 ease-in hover:text-indigo-400 md:text-sm">
             {problemId}. {problemTitle}
           </a>
