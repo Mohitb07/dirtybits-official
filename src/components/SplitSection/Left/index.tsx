@@ -10,7 +10,7 @@ type LeftPaneProps = {
 const LeftPane: React.FC<LeftPaneProps> = ({ problemName = '' }) => {
   return (
     <div className="h-[100vh] overflow-hidden p-5">
-      <Tabs color="grape" radius="md" defaultValue="gallery">
+      <Tabs color="primary.5" radius="md" defaultValue="gallery">
         <Tabs.List>
           <Tabs.Tab value="gallery" icon={<TbFileDescription />}>
             Problem
