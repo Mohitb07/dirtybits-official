@@ -3,6 +3,8 @@ import React from 'react';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { TbFileDescription } from 'react-icons/tb';
 
+import ProblemTab from './ProblemTab';
+
 type LeftPaneProps = {
   problemName: string;
 };
@@ -24,7 +26,7 @@ const LeftPane: React.FC<LeftPaneProps> = ({ problemName = '' }) => {
         </Tabs.List>
 
         <Tabs.Panel value="gallery" pt="xs">
-          {problemName}
+          <ProblemTab problemName={problemName} />
         </Tabs.Panel>
 
         <Tabs.Panel value="messages" pt="xs">
