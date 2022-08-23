@@ -18,11 +18,15 @@ const Problem: React.FC<ProblemProps> = () => {
         title={problemName ?? 'Loading...'}
         description="It's an online coding platform for skill enhancement and students preparing for technical interviews."
       />
-      <div className="h-screen">
+      <div className="hidden md:block">
         <Split className="split">
           <LeftPane problemName={problemName} />
           <RightPane />
         </Split>
+      </div>
+      <div className="md:hidden">
+        <LeftPane problemName={problemName} />
+        <RightPane />
       </div>
     </>
   );
