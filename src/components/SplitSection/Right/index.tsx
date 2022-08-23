@@ -7,6 +7,7 @@ import { defineTheme } from '@/utils/defineTheme';
 
 import LanguageDropdown from './Language';
 import ThemeDropdown from './Theme';
+import Utility from './Utilities';
 
 type RightPaneProps = {};
 
@@ -47,9 +48,10 @@ const RightPane: React.FC<RightPaneProps> = () => {
 
   return (
     <div className="h-[100vh] p-5">
-      <div className="mb-10 flex items-center gap-10">
+      <div className="mb-10 flex flex-wrap items-center justify-center gap-5 md:gap-10">
         <LanguageDropdown onSelectChange={onSelectChange} />
         <ThemeDropdown onThemeChange={themeChangeHandler} theme={theme.value} />
+        <Utility />
       </div>
       <CodeEditor
         theme={theme.value}
