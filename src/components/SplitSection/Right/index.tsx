@@ -1,5 +1,7 @@
-import { Button } from '@mantine/core';
+import { Button, Tabs, Text, Textarea } from '@mantine/core';
 import React, { useEffect, useRef, useState } from 'react';
+import { BsArrowUpRightSquareFill, BsFillCollectionFill } from 'react-icons/bs';
+import { FcServices } from 'react-icons/fc';
 
 import CodeEditor from '@/components/CodeEditor';
 import { languageOptions } from '@/constants/languageOptions';
@@ -48,7 +50,7 @@ const RightPane: React.FC<RightPaneProps> = () => {
 
   return (
     <div className="h-[100vh] p-5">
-      <div className="mb-10 flex flex-wrap items-center justify-center gap-5 md:gap-10">
+      <div className="mb-10 flex flex-wrap items-center justify-center gap-5 px-14 md:gap-10">
         <LanguageDropdown onSelectChange={onSelectChange} />
         <ThemeDropdown onThemeChange={themeChangeHandler} theme={theme.value} />
         <Utility />
@@ -71,6 +73,38 @@ const RightPane: React.FC<RightPaneProps> = () => {
           </Button>
         </div>
       </div>
+      {true && (
+        <Tabs
+          variant="pills"
+          color="dark"
+          className="p-5"
+          defaultValue="Output"
+        >
+          <Tabs.List>
+            <Tabs.Tab value="Input" icon={<BsFillCollectionFill size={14} />}>
+              Input
+            </Tabs.Tab>
+            <Tabs.Tab
+              value="Output"
+              icon={<BsArrowUpRightSquareFill size={14} />}
+            >
+              Output
+            </Tabs.Tab>
+          </Tabs.List>
+          <Tabs.Panel value="Input" pt="xs">
+            <Textarea placeholder="Custom Input" autosize minRows={5} />
+          </Tabs.Panel>
+
+          <Tabs.Panel value="Output" pt="xs">
+            <div className="flex items-center justify-center space-x-3">
+              <FcServices size={40} />
+              <Text size="xl" weight="bold">
+                You must run your code first
+              </Text>
+            </div>
+          </Tabs.Panel>
+        </Tabs>
+      )}
     </div>
   );
 };
