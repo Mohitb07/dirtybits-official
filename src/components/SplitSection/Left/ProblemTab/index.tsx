@@ -46,7 +46,7 @@ const ProblemTab: React.FC<ProblemTabProps> = ({ problemName = '' }) => {
         </div>
       </div>
 
-      <div className="flex items-center space-x-5">
+      <div className="flex flex-wrap items-center gap-5">
         <p
           className={`inline rounded-xl bg-yellow-600 px-3 py-1 text-sm text-white`}
         >
