@@ -1,8 +1,10 @@
-import { ActionIcon, Tooltip } from '@mantine/core';
+import { ActionIcon, Avatar, Menu, Tooltip } from '@mantine/core';
 import React from 'react';
-import { AiOutlineCloudUpload } from 'react-icons/ai';
+import { AiOutlineCloudUpload, AiOutlineCodeSandbox } from 'react-icons/ai';
+import { BiUser } from 'react-icons/bi';
 import { GiAnticlockwiseRotation } from 'react-icons/gi';
 import { ImDownload } from 'react-icons/im';
+import { MdLogout } from 'react-icons/md';
 import { TbPackgeImport } from 'react-icons/tb';
 
 const Utility: React.FC = () => {
@@ -40,7 +42,31 @@ const Utility: React.FC = () => {
         </ActionIcon>
       </Tooltip>
 
-      <div className="">Dropdown</div>
+      <div className="hover:cursor-pointer">
+        <Menu shadow="md" width={200} position="bottom-end">
+          <Menu.Target>
+            <Avatar
+              radius="lg"
+              size="lg"
+              color="violet"
+              src="https://avatars.githubusercontent.com/u/51907464?v=4"
+            >
+              MB
+            </Avatar>
+          </Menu.Target>
+
+          <Menu.Dropdown>
+            <Menu.Item icon={<BiUser size={16} />}>Profile</Menu.Item>
+            <Menu.Item icon={<AiOutlineCodeSandbox size={16} />}>
+              Add Problem
+            </Menu.Item>
+            <Menu.Divider />
+            <Menu.Item color="red" icon={<MdLogout size={16} />}>
+              Log Out
+            </Menu.Item>
+          </Menu.Dropdown>
+        </Menu>
+      </div>
     </div>
   );
 };
