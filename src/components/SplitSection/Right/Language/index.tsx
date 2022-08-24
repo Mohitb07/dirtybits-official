@@ -1,4 +1,5 @@
 import React from 'react';
+import { HiChevronDown } from 'react-icons/hi';
 import Select from 'react-select';
 
 import { languageOptions } from '@/constants/languageOptions';
@@ -15,6 +16,10 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
     <div>
       <label className="text-sm font-semibold text-[#C1C2C0]">Language</label>
       <Select
+        components={{
+          DropdownIndicator: () => <HiChevronDown size={18} className="mr-2" />,
+          IndicatorSeparator: () => null,
+        }}
         placeholder="Language"
         options={languageOptions}
         styles={customStyles}
