@@ -7,6 +7,7 @@ import { RecoilRoot } from 'recoil';
 
 import Navbar from '@/components/Navbar';
 import { RouterTransition } from '@/components/RouterTransition';
+import AuthUserProvider from '@/context/authUser';
 import theme from '@/theme/mantine';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
@@ -16,8 +17,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
       <RouterTransition />
       <RecoilRoot>
-        <Navbar isHome={isHome} activeNav={router.pathname} />
-        <Component {...pageProps} />
+        <AuthUserProvider>
+          <Navbar isHome={isHome} activeNav={router.pathname} />
+          <Component {...pageProps} />
+        </AuthUserProvider>
       </RecoilRoot>
     </MantineProvider>
   );
