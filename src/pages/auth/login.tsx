@@ -1,13 +1,56 @@
 import { Button, Checkbox, Group, Input, Text, TextInput } from '@mantine/core';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 import PageContainer from '@/layouts/Container';
 import { Meta } from '@/layouts/Meta';
 
+import { app } from '../../../firebase/config';
+
 type LoginProps = {};
 
 const Login: React.FC<LoginProps> = () => {
+  const auth = getAuth(app);
+  const [loading, setLoading] = useState(false);
+
+  const googleAuth = new GoogleAuthProvider();
+
+  const loginHandler = () => {
+    setLoading(true);
+    signInWithPopup(auth, googleAuth)
+      .then((result) => {
+        const { user } = result;
+        console.log('user', user);
+      })
+      .catch((error) => {
+        console.log('error', error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const signOutHandler = () => {
+    setLoading(true);
+    signOut(auth)
+      .then(() => {
+        console.log('signed out');
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log('signOutHandler', error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <>
       <Meta
@@ -34,6 +77,12 @@ const Login: React.FC<LoginProps> = () => {
           </Group>
           <Button loading={false} fullWidth>
             Login
+          </Button>
+          <Button loading={loading} onClick={loginHandler} fullWidth>
+            Google Login
+          </Button>
+          <Button loading={loading} onClick={signOutHandler} fullWidth>
+            Sign Out
           </Button>
           <Group position="center">
             <Text align="center" size="xs">
