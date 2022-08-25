@@ -30,6 +30,7 @@
     "@mantine/notifications": "^5.1.6",
     "@mantine/nprogress": "^5.1.6",
     "@monaco-editor/react": "^4.4.5",
+    "firebase": "^9.9.3",
     "monaco-themes": "^0.4.2",
     "next": "^12.2.2",
     "next-seo": "^5.4.0",
