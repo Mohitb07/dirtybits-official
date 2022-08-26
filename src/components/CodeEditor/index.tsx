@@ -1,5 +1,7 @@
-import Editor from '@monaco-editor/react';
+import { Loader } from '@mantine/core';
 import React from 'react';
+
+const Editor = React.lazy(() => import('@monaco-editor/react'));
 
 type CodeEditorProps = {
   theme: string;
@@ -16,24 +18,21 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   onEditorChange,
   code,
 }) => {
-  // const [code, setCode] = React.useState('');
-  // const code = useRef(code);
-
   const handleEditorValueChange = (e: any) => {
     onEditorChange(e);
   };
-  console.log('editor render');
-
   return (
-    <Editor
-      height="50%"
-      width="100%"
-      defaultLanguage={language || 'javascript'}
-      defaultValue="// Language Construct here"
-      theme={theme}
-      value={code.current}
-      onChange={handleEditorValueChange}
-    />
+    <React.Suspense fallback={<Loader size="xl" />}>
+      <Editor
+        height="50%"
+        width="100%"
+        defaultLanguage={language || 'javascript'}
+        defaultValue="// Language Construct here"
+        theme={theme}
+        value={code.current}
+        onChange={handleEditorValueChange}
+      />
+    </React.Suspense>
   );
 };
 export default CodeEditor;
