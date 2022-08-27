@@ -1,10 +1,7 @@
 import {
   Avatar,
-  Burger,
   Button,
-  Container,
   Divider,
-  Drawer,
   Group,
   List,
   Loader,
@@ -12,25 +9,23 @@ import {
 } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AiOutlineCodeSandbox } from 'react-icons/ai';
 import { BiUser } from 'react-icons/bi';
 import { MdLogout } from 'react-icons/md';
 
 import { AuthUserContext } from '@/context/authUser';
 import PageContainer from '@/layouts/Container';
-// import logo from '@/public/logo.png';
+
+const MobileNavbar = React.lazy(() => import('./Mobile'));
+
 type Props = {
   isHome?: boolean;
   activeNav?: string;
 };
 
 const Index: React.FC<Props> = ({ isHome = false, activeNav = '' }: Props) => {
-  const [opened, setOpened] = useState(false);
-  const title = opened ? 'Close navigation' : 'Open navigation';
   const { authUser, loading } = useContext(AuthUserContext);
-
-  console.log('authuser', authUser);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -156,72 +151,10 @@ const Index: React.FC<Props> = ({ isHome = false, activeNav = '' }: Props) => {
           </div>
         </Group>
       </PageContainer>
-      <Container className="flex-1 items-center md:hidden">
-        <Group className="flex justify-between">
-          <Burger
-            opened={opened}
-            onClick={() => setOpened((o) => !o)}
-            title={title}
-          />
-          <Link href="/" passHref>
-            <Image
-              className="cursor-pointer"
-              height={40}
-              width={120}
-              src="/logo.png"
-              alt="Logo"
-            />
-          </Link>
-          <Button variant="white" radius="xl" size="xs">
-            Log In
-          </Button>
-        </Group>
-      </Container>
-      <Drawer
-        aria-labelledby="nav-drawer"
-        aria-describedby="drawer-item-list"
-        closeButtonLabel="Close drawer"
-        opened={opened}
-        onClose={() => setOpened(false)}
-        title="Mohit Singh Bisht"
-        padding="xl"
-        size="md"
-        overlayBlur={3}
-      >
-        <List className="mt-10 flex flex-col space-y-10 text-white">
-          <Link href="/problemset/all" passHref>
-            <div
-              className={`group cursor-pointer tracking-wide ${
-                activeNav.includes('/problemset') && isActiveIndex
-              }`}
-            >
-              <List.Item>Problems</List.Item>
-              <div className="hover-underline underline"></div>
-            </div>
-          </Link>
-          <Link href="/compete" passHref>
-            <div
-              className={`group cursor-pointer tracking-wide ${
-                activeNav.includes('/compete') && isActiveIndex
-              }`}
-            >
-              <List.Item>Compete</List.Item>
-              <div className="hover-underline"></div>
-            </div>
-          </Link>
-          <Link href="/dashboard" passHref>
-            <div
-              className={`group cursor-pointer tracking-wide ${
-                activeNav.includes('/dashboard') && isActiveIndex
-              }`}
-            >
-              <List.Item>Dashboard</List.Item>
-              <div className="hover-underline"></div>
-            </div>
-          </Link>
-        </List>
-      </Drawer>
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <MobileNavbar activeNav={activeNav} />
+      </React.Suspense>
     </nav>
   );
 };
-export default Index;
+export default React.memo(Index);
