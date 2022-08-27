@@ -1,9 +1,8 @@
-import { Button, Tabs, Text, Textarea } from '@mantine/core';
+import { Button } from '@mantine/core';
 import React, { useEffect, useRef, useState } from 'react';
-import { BsArrowUpRightSquareFill, BsFillCollectionFill } from 'react-icons/bs';
-import { FcServices } from 'react-icons/fc';
 
 import CodeEditor from '@/components/CodeEditor';
+import MyTabs from '@/components/Tabs';
 import { languageOptions } from '@/constants/languageOptions';
 import { defineTheme } from '@/utils/defineTheme';
 
@@ -30,6 +29,7 @@ const RightPane: React.FC<RightPaneProps> = () => {
   };
 
   const [language, setLanguage] = useState(languageOptions[0]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const onSelectChange = (lang: any) => {
     console.log('selected Option...', lang);
@@ -63,7 +63,13 @@ const RightPane: React.FC<RightPaneProps> = () => {
       />
       <div className="my-10 flex items-center justify-end space-x-3">
         <div className="btnRing p-1">
-          <Button variant="white" className=" text-black" radius="xl" size="md">
+          <Button
+            onClick={() => setSelectedIndex(1)}
+            variant="white"
+            className=" text-black"
+            radius="xl"
+            size="md"
+          >
             Run
           </Button>
         </div>
@@ -74,36 +80,37 @@ const RightPane: React.FC<RightPaneProps> = () => {
         </div>
       </div>
       {true && (
-        <Tabs
-          variant="pills"
-          color="dark"
-          className="p-5"
-          defaultValue="Output"
-        >
-          <Tabs.List>
-            <Tabs.Tab value="Input" icon={<BsFillCollectionFill size={14} />}>
-              Input
-            </Tabs.Tab>
-            <Tabs.Tab
-              value="Output"
-              icon={<BsArrowUpRightSquareFill size={14} />}
-            >
-              Output
-            </Tabs.Tab>
-          </Tabs.List>
-          <Tabs.Panel value="Input" pt="xs">
-            <Textarea placeholder="Custom Input" autosize minRows={5} />
-          </Tabs.Panel>
+        // <Tabs
+        //   variant="pills"
+        //   color="dark"
+        //   className="p-5"
+        //   defaultValue="Output"
+        // >
+        //   <Tabs.List>
+        //     <Tabs.Tab value="Input" icon={<BsFillCollectionFill size={14} />}>
+        //       Input
+        //     </Tabs.Tab>
+        //     <Tabs.Tab
+        //       value="Output"
+        //       icon={<BsArrowUpRightSquareFill size={14} />}
+        //     >
+        //       Output
+        //     </Tabs.Tab>
+        //   </Tabs.List>
+        //   <Tabs.Panel value="Input" pt="xs">
+        //     <Textarea placeholder="Custom Input" autosize minRows={5} />
+        //   </Tabs.Panel>
 
-          <Tabs.Panel value="Output" pt="xs">
-            <div className="flex items-center justify-center space-x-3">
-              <FcServices size={40} />
-              <Text size="xl" weight="bold">
-                You must run your code first
-              </Text>
-            </div>
-          </Tabs.Panel>
-        </Tabs>
+        //   <Tabs.Panel value="Output" pt="xs">
+        //     <div className="flex items-center justify-center space-x-3">
+        //       <FcServices size={40} />
+        //       <Text size="xl" weight="bold">
+        //         You must run your code first
+        //       </Text>
+        //     </div>
+        //   </Tabs.Panel>
+        // </Tabs>
+        <MyTabs selectedIndex={selectedIndex} onChange={setSelectedIndex} />
       )}
     </div>
   );
