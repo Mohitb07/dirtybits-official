@@ -43,11 +43,11 @@ const HeroSection: React.FC = () => {
               </Link>
             </div>
           </div>
-          <div className="col-span-1 flex flex-col items-center justify-center transition-transform ease-in-out lg:scale-125">
+          <div className="col-span-1 flex flex-col items-center justify-center transition-transform ease-in-out lg:h-[600px] lg:w-[600px]">
             <Image
               src="https://i.postimg.cc/MGFX8MY9/Saly-1.png"
-              height={800}
-              width={800}
+              height={700}
+              width={700}
               className="aspect-auto"
               alt="rocket illustrator"
             />
